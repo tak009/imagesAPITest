@@ -1,39 +1,43 @@
-<!-- <!DOCTYPE html> -->
-<!-- html lang="en">
+<!DOCTYPE html> -->
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZ2PsxQZzTNdRZFBMeQ9uRixxw8taSmjA&libraries=places&language=en"></script>
+  <script src="https://apis.google.com/js/api.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
+
 <body>
   <div id="cse" style="width: 100%;">Loading</div>
 
 
+  <script type="text/javascript">
+  var googleAPIKey = "AIzaSyDZ2PsxQZzTNdRZFBMeQ9uRixxw8taSmjA";
+  var lat = 39.0839973;
+  var lon = -77.15275780000002;
+  var nearbyplacesURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&radius=500&type=point_of_interest&key=" + googleAPIKey;
 
-<script src="https://apis.google.com/js/api.js" type="text/javascript"></script>
-<script type="text/javascript">
-  gapi.load('auth2', function() {
-    // Library loaded.
-    console.log("Library loaded");
-    var googleAPIKey = "AIzaSyDZ2PsxQZzTNdRZFBMeQ9uRixxw8taSmjA";
-    var lat = 39.0839973;
-    var lon = -77.15275780000002;
-    var nearbyplacesURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&radius=500&type=sightseeing&key=" + googleAPIKey;
+  $.ajax({
+    url: nearbyplacesURL,
+    type: 'GET',
+    dataType: 'json',
+    headers: {  'Access-Control-Allow-Origin': 'https://tak009.github.io/imagesAPITest/index.html' },
+    success: function(jsondata){console.log("SUCCESS");}
 
+  });//.done(function(response) {
+  // //console.log(response);
+  // });
 
-
-var xhr = new XMLHttpRequest();
-xhr.open('GET', nearbyplacesURL + '?access_token=' + encodeURIComponent(googleAPIKey));
-xhr.send();
-
-
-  });
-</script>
+  </script>
 
 </body>
-</html> -->
+
+</html>
 
 
 <!-- <html>
@@ -71,7 +75,7 @@ function handleButtonClick() {
 
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -122,7 +126,7 @@ function getTitle(text) {
 // Make the actual CORS request.
 function makeCorsRequest() {
   // This is a sample server that supports CORS.
-  var url = nearbyplacesURL;
+  var url = 'http://html5rocks-cors.s3-website-us-east-1.amazonaws.com/index.html';
 
   var xhr = createCORSRequest('GET', url);
   if (!xhr) {
@@ -147,4 +151,4 @@ makeCorsRequest()
 
 </script>
 </body>
-</html>
+</html> -->
